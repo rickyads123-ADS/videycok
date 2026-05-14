@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LuckyWin - App de Lotería</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #090909, #141e30, #243b55);
+      min-height: 100vh;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      padding: 15px 20px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      color: #ffd700;
+    }
+
+    .balance {
+      background: linear-gradient(45deg, #00c853, #64dd17);
+      padding: 10px 18px;
+      border-radius: 15px;
+      font-weight: 600;
+      color: #fff;
+      box-shadow: 0 5px 15px rgba(0,200,83,0.4);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-bottom: 30px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.08);
+      border-radius: 25px;
+      padding: 25px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 35px rgba(0,0,0,0.35);
+      transition: 0.3s ease;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .jackpot {
+      text-align: center;
+    }
+
+    .jackpot h1 {
+      font-size: 22px;
+      margin-bottom: 15px;
+      color: #ffd700;
+    }
+
+    .jackpot-amount {
+      font-size: 55px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #00e5ff;
+      text-shadow: 0 0 15px rgba(0,229,255,0.5);
+    }
+
+    .timer {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .timer div {
+      background: rgba(255,255,255,0.1);
+      padding: 12px;
+      border-radius: 12px;
+      min-width: 65px;
+    }
+
+    .timer span {
+      display: block;
