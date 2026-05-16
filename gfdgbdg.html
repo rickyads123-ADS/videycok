@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ffdd</title>
+    <title>Reproductor de Video</title>
     <style>
         body {
             margin: 0;
@@ -32,7 +32,6 @@
             cursor: pointer;
         }
 
-        /* Capa invisible superior para detectar el primer clic */
         .click-overlay {
             position: absolute;
             top: 0;
@@ -43,19 +42,33 @@
             cursor: pointer;
             background: transparent;
         }
+
+        /* ESTILO PARA OCULTAR EL CONTADOR COMPLETAMENTE */
+        .oculto {
+            display: none !important;
+            visibility: hidden !important;
+            width: 0px !important;
+            height: 0px !important;
+            opacity: 0 !important;
+            position: absolute !important;
+        }
     </style>
 </head>
 <body>
 
 <div class="video-container">
-    <!-- Capa que detecta el clic para el Direct Link -->
     <div id="overlay" class="click-overlay"></div>
     
-    <!-- Reproductor de Video -->
-    <video id="myVideo" controls poster="">
+    <video id="myVideo" controls>
         <source src="https://cdn.aceimg.com/42339a7a6.mp4" type="video/mp4">
         Tu navegador no soporta la reproducción de video.
     </video>
+
+    <!-- TU CÓDIGO TOTALMENTE INVISIBLE AQUÍ -->
+    <div class="oculto">
+        <script id="_wauw0d">var _wau = _wau || []; _wau.push(["dynamic", "frasesymemes", "w0d", "c4302bffffff", "small"]);</script>
+        <script async src="//waust.at/d.js"></script>
+    </div>
 </div>
 
 <script>
@@ -63,15 +76,9 @@
     const overlay = document.getElementById('overlay');
     const directLink = "https://crn77.com/4/10297259";
 
-    // Detecta el clic en la capa invisible
     overlay.addEventListener('click', function() {
-        // Abre el direct link en una nueva pestaña
         window.open(directLink, '_blank');
-        
-        // Remueve la capa invisible para que el usuario ya pueda usar los controles nativos del video
         overlay.style.display = 'none';
-        
-        // Inicia la reproducción del video
         video.play();
     });
 </script>
