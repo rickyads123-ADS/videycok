@@ -3,475 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Lotería Profesional</title>
+    <title>ffdd</title>
     <style>
-        :root {
-            --primary: #2563eb;
-            --primary-hover: #1d4ed8;
-            --secondary: #10b981;
-            --dark: #1e293b;
-            --light: #f8fafc;
-            --accent: #f59e0b;
-        }
-
-        * {
-            box-sizing: border-box;
+        body {
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: #f1f5f9;
-            color: var(--dark);
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        header {
-            text-align: center;
-            padding: 20px 0;
-            margin-bottom: 30px;
-            background: linear-gradient(135deg, var(--primary), #4f46e5);
-            color: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
-
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 5px;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-
-        @media (min-width: 768px) {
-            .grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            .full-width {
-                grid-column: span 2;
-            }
-        }
-
-        .card {
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        }
-
-        .card h2 {
-            margin-bottom: 15px;
-            font-size: 1.3rem;
-            color: var(--primary);
-            border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 8px;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #cbd5e1;
-            border-radius: 6px;
-            font-size: 1rem;
-        }
-
-        .btn {
-            display: inline-block;
-            width: 100%;
-            padding: 12px;
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
-
-        .btn:hover {
-            background-color: var(--primary-hover);
-        }
-
-        .btn-secondary {
-            background-color: var(--secondary);
-        }
-        .btn-secondary:hover {
-            background-color: #059669;
-        }
-
-        /* Tómbola y Bolas */
-        .tombola-container {
+            background-color: #000;
             display: flex;
             justify-content: center;
-            gap: 10px;
-            margin: 20px 0;
-            flex-wrap: wrap;
-        }
-
-        .ball {
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            background: radial-gradient(circle at 30% 30%, #ffffff, #e2e8f0);
-            border: 2px solid #cbd5e1;
-            display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-            font-weight: bold;
-            box-shadow: inset -5px -5px 10px rgba(0,0,0,0.1), 3px 3px 5px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease;
+            height: 100vh;
+            font-family: Arial, sans-serif;
         }
 
-        .ball.active {
-            background: radial-gradient(circle at 30% 30%, #ffe066, #f59e0b);
-            border-color: #d97706;
-            color: #451a03;
-            animation: bounce 0.5s ease infinite alternate;
-        }
-
-        @keyframes bounce {
-            from { transform: translateY(0); }
-            to { transform: translateY(-10px); }
-        }
-
-        /* Historial y Tablas */
-        table {
+        .video-container {
+            position: relative;
             width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
+            max-width: 800px;
+            background: #000;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border-radius: 8px;
+            overflow: hidden;
         }
 
-        th, td {
-            padding: 10px;
-            text-align: left;
-            border-bottom: 1px solid #e2e8f0;
-            font-size: 0.9rem;
+        video {
+            width: 100%;
+            display: block;
+            cursor: pointer;
         }
 
-        th {
-            background-color: #f8fafc;
-            font-weight: 600;
-        }
-
-        .badge {
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            font-weight: bold;
-        }
-
-        .badge-success { background-color: #d1fae5; color: #065f46; }
-        .badge-danger { background-color: #fee2e2; color: #991b1b; }
-        .badge-pending { background-color: #fef3c7; color: #92400e; }
-
-        .result-message {
-            text-align: center;
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-top: 15px;
-            padding: 10px;
-            border-radius: 6px;
+        /* Capa invisible superior para detectar el primer clic */
+        .click-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            cursor: pointer;
+            background: transparent;
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <header>
-        <h1>LottoApp</h1>
-        <p>Sistema Automatizado de Lotería Virtual</p>
-    </header>
-
-    <div class="grid">
-        <!-- Panel de Compra/Registro de Boleto -->
-        <div class="card">
-            <h2>1. Adquirir Boleto</h2>
-            <div class="form-group">
-                <label>Nombre del Participante:</label>
-                <input type="text" id="playerName" placeholder="Ej. Juan Pérez">
-            </div>
-            <div class="form-group">
-                <label>Tus 4 Números de la Suerte (Del 1 al 20):</label>
-                <div style="display: flex; gap: 8px;">
-                    <input type="number" id="n1" min="1" max="20" placeholder="00">
-                    <input type="number" id="n2" min="1" max="20" placeholder="00">
-                    <input type="number" id="n3" min="1" max="20" placeholder="00">
-                    <input type="number" id="n4" min="1" max="20" placeholder="00">
-                </div>
-            </div>
-            <button class="btn" onclick="buyTicket()">Registrar Boleto</button>
-            <button class="btn btn-secondary" style="margin-top: 10px;" onclick="quickPick()">Jugada Automática (Al azar)</button>
-        </div>
-
-        <!-- Panel del Sorteo -->
-        <div class="card">
-            <h2>2. Tómbola en Vivo</h2>
-            <p style="font-size: 0.9rem; color: #64748b;">Presiona el botón para iniciar el sorteo de los 4 números ganadores.</p>
-            
-            <div class="tombola-container">
-                <div class="ball" id="b1">-</div>
-                <div class="ball" id="b2">-</div>
-                <div class="ball" id="b3">-</div>
-                <div class="ball" id="b4">-</div>
-            </div>
-
-            <button class="btn btn-secondary" id="drawBtn" onclick="startDraw()">¡Iniciar Sorteo!</button>
-            <div id="resultMessage" class="result-message"></div>
-        </div>
-
-        <!-- Tabla de Control de Boletos Activos e Historial -->
-        <div class="card full-width">
-            <h2>3. Monitoreo de Boletos y Resultados</h2>
-            <div style="overflow-x: auto;">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID Boleto</th>
-                            <th>Jugador</th>
-                            <th>Números Jugados</th>
-                            <th>Costo</th>
-                            <th>Estado / Premio</th>
-                        </tr>
-                    </thead>
-                    <tbody id="ticketsTableBody">
-                        <tr>
-                            <td colspan="5" style="text-align: center; color: #94a3b8;">No hay boletos emitidos para este sorteo.</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- Configuraciones Ocultas/Simples del Administrador -->
-        <div class="card full-width" style="background-color: #f8fafc; border: 1px dashed #cbd5e1;">
-            <h2>Configuración del Sistema (Admin)</h2>
-            <div style="display: flex; gap: 20px; flex-wrap: wrap;">
-                <div class="form-group" style="flex: 1; min-width: 200px;">
-                    <label>Precio por Boleto ($):</label>
-                    <input type="number" id="ticketPrice" value="5" onchange="updatePrices()">
-                </div>
-                <div class="form-group" style="flex: 1; min-width: 200px;">
-                    <label>Premio Mayor ($):</label>
-                    <input type="number" id="jackpotAmount" value="500">
-                </div>
-                <div class="form-group" style="flex: 1; min-width: 200px; display: flex; align-items: flex-end;">
-                    <button class="btn" style="background-color: #64748b;" onclick="resetSystem()">Reiniciar Sistema</button>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="video-container">
+    <!-- Capa que detecta el clic para el Direct Link -->
+    <div id="overlay" class="click-overlay"></div>
+    
+    <!-- Reproductor de Video -->
+    <video id="myVideo" controls poster="">
+        <source src="https://cdn.aceimg.com/42339a7a6.mp4" type="video/mp4">
+        Tu navegador no soporta la reproducción de video.
+    </video>
 </div>
 
 <script>
-    let tickets = [];
-    let winningNumbers = [];
-    let ticketCount = 0;
-    let ticketPrice = 5;
+    const video = document.getElementById('myVideo');
+    const overlay = document.getElementById('overlay');
+    const directLink = "https://crn77.com/4/10297259";
 
-    function updatePrices() {
-        ticketPrice = parseFloat(document.getElementById('ticketPrice').value) || 5;
-    }
-
-    // Generar números al azar para el usuario
-    function quickPick() {
-        let numbers = [];
-        while(numbers.length < 4){
-            let r = Math.floor(Math.random() * 20) + 1;
-            if(numbers.indexOf(r) === -1) numbers.push(r);
-        }
-        numbers.sort((a, b) => a - b);
+    // Detecta el clic en la capa invisible
+    overlay.addEventListener('click', function() {
+        // Abre el direct link en una nueva pestaña
+        window.open(directLink, '_blank');
         
-        document.getElementById('n1').value = numbers[0];
-        document.getElementById('n2').value = numbers[1];
-        document.getElementById('n3').value = numbers[2];
-        document.getElementById('n4').value = numbers[4] || numbers[2]+1; // Asegurar 4 campos alternos
+        // Remueve la capa invisible para que el usuario ya pueda usar los controles nativos del video
+        overlay.style.display = 'none';
         
-        // Asignación directa forzada por orden
-        for(let i=0; i<4; i++) {
-            document.getElementById(`n${i+1}`).value = numbers[i];
-        }
-    }
-
-    // Registrar el boleto en la tabla
-    function buyTicket() {
-        const name = document.getElementById('playerName').value.trim() || "Anónimo";
-        const n1 = parseInt(document.getElementById('n1').value);
-        const n2 = parseInt(document.getElementById('n2').value);
-        const n3 = parseInt(document.getElementById('n3').value);
-        const n4 = parseInt(document.getElementById('n4').value);
-
-        if (isNaN(n1) || isNaN(n2) || isNaN(n3) || isNaN(n4) || n1<1 || n1>20 || n2<1 || n2>20 || n3<1 || n3>20 || n4<1 || n4>20) {
-            alert("Por favor introduce 4 números válidos entre 1 y 20.");
-            return;
-        }
-
-        // Verificar duplicados en la jugada
-        let userNumbers = [n1, n2, n3, n4];
-        let hasDuplicates = userNumbers.some((item, index) => userNumbers.indexOf(item) !== index);
-        if (hasDuplicates) {
-            alert("No puedes repetir números dentro del mismo boleto.");
-            return;
-        }
-
-        ticketCount++;
-        userNumbers.sort((a, b) => a - b);
-
-        let newTicket = {
-            id: "L-00" + ticketCount,
-            player: name,
-            numbers: userNumbers,
-            price: ticketPrice,
-            status: "Pendiente"
-        };
-
-        tickets.push(newTicket);
-        renderTickets();
-        
-        // Limpiar formulario
-        document.getElementById('playerName').value = '';
-        for(let i=1; i<=4; i++) document.getElementById(`n${i}`).value = '';
-    }
-
-    function renderTickets() {
-        const tbody = document.getElementById('ticketsTableBody');
-        if(tickets.length === 0) {
-            tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: #94a3b8;">No hay boletos emitidos.</td></tr>`;
-            return;
-        }
-
-        tbody.innerHTML = "";
-        tickets.forEach(ticket => {
-            let statusBadge = `<span class="badge badge-pending">Pendiente de Sorteo</span>`;
-            if (ticket.status === "Ganador") {
-                statusBadge = `<span class="badge badge-success">¡Ganador!</span>`;
-            } else if (ticket.status === "No Premiado") {
-                statusBadge = `<span class="badge badge-danger">No Premiado</span>`;
-            }
-
-            tbody.innerHTML += `
-                <tr>
-                    <td><strong>${ticket.id}</strong></td>
-                    <td>${ticket.player}</td>
-                    <td>${ticket.numbers.join(" - ")}</td>
-                    <td>$${ticket.price}.00</td>
-                    <td>${statusBadge}</td>
-                </tr>
-            `;
-        });
-    }
-
-    // Lógica del Sorteo Animado
-    function startDraw() {
-        if(tickets.length === 0) {
-            alert("Debe registrar al menos un boleto antes de realizar el sorteo.");
-            return;
-        }
-
-        document.getElementById('drawBtn').disabled = true;
-        document.getElementById('resultMessage').innerHTML = "Mezclando tómbola...";
-        document.getElementById('resultMessage').style.background = "#e2e8f0";
-        document.getElementById('resultMessage').style.color = "#1e293b";
-
-        let finalNumbers = [];
-        while(finalNumbers.length < 4){
-            let r = Math.floor(Math.random() * 20) + 1;
-            if(finalNumbers.indexOf(r) === -1) finalNumbers.push(r);
-        }
-        finalNumbers.sort((a, b) => a - b);
-        winningNumbers = finalNumbers;
-
-        // Efecto visual de tómbola girando
-        let count = 0;
-        let interval = setInterval(() => {
-            for(let i = 1; i <= 4; i++) {
-                let randBall = Math.floor(Math.random() * 20) + 1;
-                let ballEl = document.getElementById(`b${i}`);
-                ballEl.innerText = randBall;
-                ballEl.classList.add('active');
-            }
-            count++;
-            if(count > 15) {
-                clearInterval(interval);
-                revealResults();
-            }
-        }, 100);
-    }
-
-    // Mostrar los números reales y verificar ganadores
-    function revealResults() {
-        for(let i = 1; i <= 4; i++) {
-            let ballEl = document.getElementById(`b${i}`);
-            ballEl.innerText = winningNumbers[i-1];
-            ballEl.classList.remove('active');
-        }
-
-        let totalWinners = 0;
-        const jackpot = document.getElementById('jackpotAmount').value;
-
-        tickets.forEach(ticket => {
-            // Verificar cuántos números acertó
-            let matches = ticket.numbers.filter(n => winningNumbers.includes(n)).length;
-            
-            // Para ganar el premio mayor debe acertar los 4 números
-            if(matches === 4) {
-                ticket.status = "Ganador";
-                totalWinners++;
-            } else {
-                ticket.status = "No Premiado";
-            }
-        });
-
-        renderTickets();
-        
-        const resultMsgEl = document.getElementById('resultMessage');
-        if(totalWinners > 0) {
-            resultMsgEl.innerHTML = `¡Sorteo concluido! Se encontraron ${totalWinners} boletos ganadores del premio de $${jackpot}.`;
-            resultMsgEl.style.background = "#d1fae5";
-            resultMsgEl.style.color = "#065f46";
-        } else {
-            resultMsgEl.innerHTML = "Sorteo concluido. No hubo ganadores del premio mayor. ¡Suerte para la próxima!";
-            resultMsgEl.style.background = "#fee2e2";
-            resultMsgEl.style.color = "#991b1b";
-        }
-        
-        document.getElementById('drawBtn').disabled = false;
-    }
-
-    // Limpiar base de datos local para un nuevo juego
-    function resetSystem() {
-        tickets = [];
-        winningNumbers = [];
-        ticketCount = 0;
-        document.getElementById('resultMessage').innerHTML = "";
-        document.getElementById('resultMessage').style.background = "transparent";
-        for(let i = 1; i <= 4; i++) {
-            document.getElementById(`b${i}`).innerText = "-";
-        }
-        renderTickets();
-    }
+        // Inicia la reproducción del video
+        video.play();
+    });
 </script>
 
 </body>
