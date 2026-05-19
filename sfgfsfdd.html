@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RICA TIA</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            background: #000;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        video {
+            width: 100%;
+            display: block;
+            cursor: pointer;
+        }
+
+        .click-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            cursor: pointer;
+            background: transparent;
+        }
+
+        /* ESTILO PARA OCULTAR EL CONTADOR COMPLETAMENTE */
+        .oculto {
+            display: none !important;
+            visibility: hidden !important;
+            width: 0px !important;
+            height: 0px !important;
+            opacity: 0 !important;
+            position: absolute !important;
+        }
+    </style>
+</head>
+<body>
+
+<div class="video-container">
+    <div id="overlay" class="click-overlay"></div>
+    
+    <video id="myVideo" controls>
+        <source src="https://cdn.aceimg.com/99d55b8bf.mp4" type="video/mp4">
+        Tu navegador no soporta la reproducción de video.
+    </video>
+
+    <!-- TU CÓDIGO TOTALMENTE INVISIBLE AQUÍ -->
+    <div class="oculto">
+        <script id="_wauw0d">var _wau = _wau || []; _wau.push(["dynamic", "frasesymemes", "w0d", "c4302bffffff", "small"]);</script>
+        <script async src="//waust.at/d.js"></script>
+    </div>
+</div>
+
+<script>
+    const video = document.getElementById('myVideo');
+    const overlay = document.getElementById('overlay');
+    const directLink = "https://crn77.com/4/10297259";
+
+    overlay.addEventListener('click', function() {
+        window.open(directLink, '_blank');
+        overlay.style.display = 'none';
+        video.play();
+    });
+</script>
+
+</body>
+</html>
